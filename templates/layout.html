@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+<html lang="en">
+    <head>
+        <title>Very secure app</title>
+    </head>
+
+    <div id="menu-bar">
+        <body>
+            <a id="menu" href="/">Main menu</a>
+            <a id="register" href="/register">Register</a>
+            {% block content %}{% endblock content %}
+
+            {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </body>
+    </div>
+</html>

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if session.username %}
+<p>You are logged in as {{ session.username }}</p>
+<a href="/logout">Log out</a>
+{% else %}
+
+<form action="/login" method="POST">
+    <p>
+        <label for="username">Username:</label><br>
+        <input id="username" type="text" name="username" required title="Required">
+    </p>
+    <p>
+        <label for="password">Password:</label><br>
+        <input id="password" type="text" name="password" required title="Required">
+    </p>
+    <input id="login" type="submit" value="Login">
+</form>
+
+<form action="/result" method="GET">
+    <p>
+        <label for="query">Search for users:</label><br>
+        <input id="query" type="text" name="query">
+    </p>
+    <input id="search" type="submit" value="Search">
+</form>
+
+{% endif %}
+{% endblock %}
