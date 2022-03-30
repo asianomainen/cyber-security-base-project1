@@ -9,14 +9,43 @@
     </head>
 
     <div id="menu-bar">
-        <body>
-            <a id="menu" href="/">Main menu</a>
-            <a id="register" href="/register">Register</a>
-            {% block content %}{% endblock content %}
-
-            {% for message in get_flashed_messages() %}
-            <p>{{ message }}</p>
-            {% endfor %}
-        </body>
+        <a id="menu" href="/">Main menu</a> |
+        <a id="login" href="/login">Login</a>
     </div>
+
+    <div id="search-bar">
+        <form id="search-bar" action="/search" method="GET">
+            <label for="query">Search for messages:</label>
+            <input id="query" type="text" name="query">
+            <input id="search" type="submit" value="Search">
+        </form>
+    </div>
+    <br>
+    <div id="flash-message">
+        {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    <div>
+        <hr>
+        {% if session.username %}
+            <p>You are logged in as {{ session.username }} <a id="logout-button" href="/logout">Log out</a><a id="account-button" href="/account/{{ session.user_id }}">Account</a></p>
+            <hr>
+            <form action="/send" method="post">
+            Send message: <br>
+                <label>
+                    <textarea name="message" rows="3" cols="40"></textarea>
+                </label>
+                <br>
+            <input id="send-button" type="submit" value="Send">
+            </form>
+        {% else %}
+            <a href="/login">Login to post messages</a>
+        {% endif %}
+        <hr>
+    </div>
+
+    <body>
+        {% block content %}{% endblock content %}
+    </body>
 </html>

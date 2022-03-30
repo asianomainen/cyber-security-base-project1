@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if session.username %}
+    {% else %}
+    <div id="login-div">
+        <form action="/login" method="POST">
+            <p>
+                <label for="username">Username:</label><br>
+                <input id="username" type="text" name="username" required title="Required" autofocus>
+            </p>
+            <p>
+                <label for="password">Password:</label><br>
+                <input id="password" type="password" name="password" required title="Required">
+            </p>
+            <input id="login-button" type="submit" value="Login">
+        </form><br>
+        <a href="/register">Create new account</a>
+    </div>
+    {% endif %}
+{% endblock %}

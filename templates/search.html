@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if not_found_or_error %}
+        <p>{{ messages[0][0] }}</p>
+    {% else %}
+        {% for message in messages %}
+            <i>Message:</i> {{ message[0] }}
+            <p>
+            <i>Author:</i> {{ message[1] }}
+            <p>
+            <i>Time:</i> {{ message[2] }}
+            <hr>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

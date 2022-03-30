@@ -17,7 +17,17 @@ li:not(:last-child) {
    margin-bottom: 10px;
 }
 
-#menu, #admin, #login, #register, #search {
+#menu-bar {
+    float: left;
+    padding-right: 30px;
+}
+
+#search-bar {
+    padding-top: 3px;
+    padding-left: 10px;
+}
+
+#menu, #admin, #login, #login-button, #register, #search, #create-user, #send-button, #logout-button, #account-button, #delete-button{
     border-radius: 8px;
     text-decoration: none;
     display: inline-block;
@@ -37,17 +47,18 @@ li:not(:last-child) {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-#login, #search {
+#delete-button{
+    background: #d30000;
+}
+
+#login-button, #search, #create-user, #send-button, #logout-button, #account-button {
     padding: 3px 6px;
     font-size: 15px;
     margin-top: 10px;
     margin-left: 10px;
 }
 
-#menu:hover, #admin:hover, #login:hover, #register:hover, #search:hover{
-    box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
-    transition: all 0.1s ease 0s;
+#flash-message {
+    font-size: 25px;
+    color: red;
 }
-
-
-

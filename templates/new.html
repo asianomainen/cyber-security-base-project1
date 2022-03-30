@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="/send" method="post">
+Message: <br>
+    <label>
+        <textarea name="message" rows="3" cols="40"></textarea>
+    </label>
+    <br>
+<input id="send-button" type="submit" value="Send">
+</form>
+{% endblock %}
