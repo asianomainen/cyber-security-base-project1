@@ -21,12 +21,12 @@ def send(message):
 
 def search(query):
     try:
-        # To fix FlAW 3 uncomment the three lines below
+        # To fix FLAW 3 uncomment the three lines below
         # sql = "SELECT M.message, U.username, M.sent_at FROM messages M, users U " \
         #       "WHERE M.user_id=U.id AND M.message LIKE :query"
         # query_result = db.session.execute(sql, {"query": query})
 
-        # To fix FlAW 3 comment/remove the three lines below
+        # To fix FLAW 3 comment/remove the three lines below
         sql = "SELECT M.message, U.username, M.sent_at FROM messages M, users U " \
               "WHERE M.user_id=U.id AND M.message LIKE \'%" + query + "%\'"
         query_result = db.session.execute(sql)
