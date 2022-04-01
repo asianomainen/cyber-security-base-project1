@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h2>Delete account permanently:</h2>
-    <form action="/remove_account/{{ id }}">
+    <h2>Acount details:</h2>
+    <p>Username: {{ user_details.username }}</p>
+    {% if session.admin %}
+    <h3>You are an admin</h3>
+    {% endif %}
+    <form action="/remove_account/{{ user_id }}">
         <button id="delete-button" type="submit">Delete account</button>
     </form>
 {% endblock %}

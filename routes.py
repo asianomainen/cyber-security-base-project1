@@ -58,8 +58,10 @@ def search():
     return render_template("search.html", messages=messages_found, not_found_or_error=not_found_or_error)
 
 
-@app.route("/admin")
-def admin():
+@app.route("/admin/<int:user_id>", methods=["GET", "POST"])
+def admin(user_id):
+    if users.is_admin(user_id):
+        return render_template("admin.html")
     return render_template("index.html")
 
 
@@ -77,15 +79,14 @@ def send():
         return render_template("index.html")
 
 
-@app.route("/account/<int:id>")
-def account(id):
-    user_id = id
-    if user_id == id:
-        return render_template("account.html", id=id, email=["email"])
+@app.route("/account/<int:user_id>")
+def account(user_id):
+    user_details = users.get_account_details(user_id)
+    return render_template("account.html", user_id=user_id, user_details=user_details)
 
 
-@app.route("/remove_account/<int:id>")
-def remove_account(id):
-    users.remove_account(id)
+@app.route("/remove_account/<int:user_id>")
+def remove_account(user_id):
+    users.remove_account(user_id)
     users.logout()
     return redirect("/")
