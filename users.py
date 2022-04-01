@@ -18,8 +18,8 @@ def login(username, password):
         # Remove/comment this line
         if user.password == hash_value:
 
-        # To fix FLAW 2 uncomment this line
-        # if check_password_hash(user.password, password):
+            # To fix FLAW 2 uncomment this line
+            # if check_password_hash(user.password, password):
 
             session["user_id"] = user.id
             session["admin"] = False
@@ -84,3 +84,7 @@ def get_account_details(user_id):
     result = db.session.execute(sql, {"user_id": user_id})
     user_details = result.fetchone()
     return user_details
+
+
+def get_user_id():
+    return session.get("user_id", 0)

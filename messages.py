@@ -9,7 +9,7 @@ def get_list():
 
 
 def send(message):
-    user_id = users.user_id()
+    user_id = users.get_user_id()
     if user_id == 0:
         return False
     sql = "INSERT INTO messages (message, user_id, sent_at) VALUES (:message, :user_id, NOW()::timestamp(0))"
