@@ -3,7 +3,8 @@ import users
 
 
 def get_list():
-    sql = "SELECT M.message, U.username, M.sent_at FROM messages M, users U WHERE M.user_id=U.id ORDER BY M.sent_at DESC"
+    sql = "SELECT M.message, U.username, M.sent_at FROM messages M, users U " \
+          "WHERE M.user_id=U.id ORDER BY M.sent_at DESC"
     result = db.session.execute(sql)
     return result.fetchall()
 
@@ -20,8 +21,16 @@ def send(message):
 
 def search(query):
     try:
-        query_result = db.session.execute(
-            "SELECT M.message, U.username, M.sent_at FROM messages M, users U WHERE M.user_id=U.id AND M.message LIKE \'%" + query + "%\'")
+        # To fix FlAW 3 uncomment the three lines below
+        # sql = "SELECT M.message, U.username, M.sent_at FROM messages M, users U " \
+        #       "WHERE M.user_id=U.id AND M.message LIKE :query"
+        # query_result = db.session.execute(sql, {"query": query})
+
+        # To fix FlAW 3 comment/remove the three lines below
+        sql = "SELECT M.message, U.username, M.sent_at FROM messages M, users U " \
+              "WHERE M.user_id=U.id AND M.message LIKE \'%" + query + "%\'"
+        query_result = db.session.execute(sql)
+
         messages = query_result.fetchall()
         if len(messages) == 0:
             not_found_message = [("No messages found",), ]

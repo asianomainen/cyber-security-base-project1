@@ -65,6 +65,7 @@ def is_admin(user_id):
 
 
 def remove_account(user_id):
+    # To fix FLAW 1 uncomment the code below.
     # id = session["user_id"]
     # if id == user_id:
     #     sql = "DELETE FROM users WHERE id=:user_id"
@@ -73,7 +74,7 @@ def remove_account(user_id):
     # else:
     #     abort(403)
 
-    # To fix FLAW 1 remove/comment the 3 rows below and uncomment the code above.
+    # To fix FLAW 1 remove/comment the 3 rows below.
     sql = "DELETE FROM users WHERE id=:user_id"
     db.session.execute(sql, {"user_id": user_id})
     db.session.commit()
