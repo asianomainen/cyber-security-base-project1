@@ -27,7 +27,7 @@ li:not(:last-child) {
     padding-left: 10px;
 }
 
-#menu, #admin, #login, #login-button, #register, #search, #create-user, #send-button, #logout-button, #account-button, #delete-button{
+#menu, #admin, #login, #login-button, #register, #search, #create-user, #send-button, #logout-button, #account-button, #delete-button, #update-button{
     border-radius: 8px;
     text-decoration: none;
     display: inline-block;
@@ -49,6 +49,10 @@ li:not(:last-child) {
 
 #delete-button{
     background: #d30000;
+}
+
+#update-button {
+    background: #008cff;
 }
 
 #login-button, #search, #create-user, #send-button, #logout-button, #account-button {

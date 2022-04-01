@@ -40,10 +40,10 @@ def logout():
 
 def register(username, password):
     # To fix FLAW 2 remove/comment this line
-    # hash_value = hashlib.md5(password.encode()).hexdigest()
+    hash_value = hashlib.md5(password.encode()).hexdigest()
 
     # To fix FLAW 2 uncomment this line
-    hash_value = generate_password_hash(password)
+    # hash_value = generate_password_hash(password)
 
     sql = "SELECT username FROM users WHERE LOWER(username)=LOWER(:username)"
     result = db.session.execute(sql, {"username": username})
@@ -81,7 +81,7 @@ def remove_account(user_id):
 
 
 def get_account_details(user_id):
-    sql = "SELECT username, admin FROM users WHERE id=:user_id"
+    sql = "SELECT username, password, admin FROM users WHERE id=:user_id"
     result = db.session.execute(sql, {"user_id": user_id})
     user_details = result.fetchone()
     return user_details

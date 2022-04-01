@@ -90,3 +90,8 @@ def remove_account(user_id):
     users.remove_account(user_id)
     users.logout()
     return redirect("/")
+
+@app.route("/update_account/<int:user_id>")
+def update_account(user_id):
+    user = users.get_account_details(user_id)
+    return render_template("update.html", user=user)
