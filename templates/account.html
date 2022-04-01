@@ -5,6 +5,10 @@
     {% if session.admin %}
     <h3>You are an admin</h3>
     {% endif %}
+    <form action="/update_account/{{ user_id }}">
+        <button id="update-button" type="submit">Update account</button>
+    </form>
+    <br>
     <form action="/remove_account/{{ user_id }}">
         <button id="delete-button" type="submit">Delete account</button>
     </form>
